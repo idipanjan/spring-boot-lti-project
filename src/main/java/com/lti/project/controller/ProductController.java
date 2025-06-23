@@ -4,6 +4,7 @@ import com.lti.project.dto.ProductDto;
 import com.lti.project.service.ProductService;
 import com.lti.project.service.ProductServiceImpl;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
+@Slf4j
 public class ProductController {
     Logger logger = LogManager.getLogger(ProductController.class);
 
@@ -32,6 +34,7 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<List<ProductDto>> fetchProducts(){
         List<ProductDto> products = productService.getProducts();
+        logger.info("ProductController:fetchProducts execution Started");
         return new ResponseEntity<List<ProductDto>>(products, HttpStatus.OK);
     }
 
