@@ -32,7 +32,7 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<List<ProductDto>> fetchProducts(){
         List<ProductDto> products = productService.getProducts();
-        return new ResponseEntity<Map<ProductDto>>(products, HttpStatus.OK);
+        return new ResponseEntity<List<ProductDto>>(products, HttpStatus.OK);
     }
 
     @GetMapping("/products/{id}")
